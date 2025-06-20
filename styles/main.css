@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -15,6 +16,7 @@ body {
     background-color: #1e1e2f;
 }
 
+/* CSS Variables */
 :root {
     --primary-bg: #1e1e2f;
     --secondary-bg: #27293d;
@@ -53,6 +55,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
+    gap: 2rem;
 }
 
 .logo {
@@ -60,6 +63,58 @@ body {
     font-weight: bold;
     color: var(--accent-blue);
     text-decoration: none;
+    flex-shrink: 0;
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--secondary-bg);
+    border-radius: 25px;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-container:focus-within {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(78, 158, 255, 0.2);
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.search-btn {
+    background: var(--accent-blue);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-btn:hover {
+    background: #3182ce;
+    transform: scale(1.05);
 }
 
 .nav {
@@ -73,6 +128,7 @@ body {
     font-weight: 500;
     position: relative;
     transition: var(--transition);
+    white-space: nowrap;
 }
 
 .nav-link:hover,
@@ -94,6 +150,210 @@ body {
 .nav-link:hover::after,
 .nav-link.active::after {
     width: 100%;
+}
+
+/* Basket Container */
+.basket-container {
+    position: relative;
+}
+
+.basket-btn {
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.basket-btn:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+.basket-count {
+    background: var(--accent-red);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+/* Basket Dropdown */
+.basket-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: 350px;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+    display: none;
+    margin-top: 0.5rem;
+}
+
+.basket-dropdown.active {
+    display: block;
+    animation: fadeInUp 0.3s ease;
+}
+
+.basket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.basket-header h3 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.close-basket {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-basket:hover {
+    color: var(--accent-red);
+}
+
+.basket-items {
+    padding: 1rem;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.empty-basket {
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.basket-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    background: var(--primary-bg);
+    border: 1px solid var(--border-color);
+}
+
+.basket-item-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.basket-item-info {
+    flex: 1;
+}
+
+.basket-item-name {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.basket-item-category {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.remove-item {
+    background: var(--accent-red);
+    border: none;
+    color: white;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: var(--transition);
+}
+
+.remove-item:hover {
+    background: #e53e3e;
+}
+
+.basket-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Search Results */
+.search-results {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 30, 47, 0.98);
+    z-index: 999;
+    padding-top: 100px;
+    overflow-y: auto;
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.search-header h2 {
+    color: var(--text-primary);
+    font-size: 2rem;
+}
+
+.close-search {
+    background: var(--accent-red);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-search:hover {
+    background: #e53e3e;
+    transform: scale(1.1);
+}
+
+.search-games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
 .mobile-menu {
@@ -293,6 +553,17 @@ body {
     line-height: 1.5;
 }
 
+.game-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.add-to-basket {
+    flex: 1;
+    min-width: 120px;
+}
+
 /* Page Header */
 .page-header {
     padding: 8rem 0 4rem;
@@ -348,6 +619,23 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 968px) {
+    .nav-wrapper {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .search-container {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
+    }
+    
+    .basket-dropdown {
+        width: 300px;
+    }
+}
+
 @media (max-width: 768px) {
     .nav {
         display: none;
@@ -381,6 +669,15 @@ body {
     .container {
         padding: 0 15px;
     }
+    
+    .basket-dropdown {
+        width: 280px;
+        right: -50px;
+    }
+    
+    .search-results {
+        padding-top: 120px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -395,6 +692,23 @@ body {
     
     .game-content {
         padding: 1rem;
+    }
+    
+    .game-actions {
+        flex-direction: column;
+    }
+    
+    .basket-dropdown {
+        width: 250px;
+        right: -80px;
+    }
+    
+    .nav-wrapper {
+        padding: 0.75rem 0;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
     }
 }
 

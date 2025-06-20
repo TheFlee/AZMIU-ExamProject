@@ -13,12 +13,48 @@
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">GameZone</div>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Oyun axtar...">
+                    <button class="search-btn" onclick="performSearch()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                        </svg>
+                    </button>
+                </div>
+
                 <nav class="nav">
                     <a href="index.html" class="nav-link">Ana Səhifə</a>
                     <a href="games.html" class="nav-link">Oyunlar</a>
                     <a href="news.html" class="nav-link">Xəbərlər</a>
                     <a href="contact.html" class="nav-link active">Əlaqə</a>
                 </nav>
+
+                <!-- Basket -->
+                <div class="basket-container">
+                    <button class="basket-btn" onclick="toggleBasket()">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7 4V2C7 1.45 7.45 1 8 1H16C16.55 1 17 1.45 17 2V4H20C20.55 4 21 4.45 21 5S20.55 6 20 6H19V19C19 20.1 18.1 21 17 21H7C5.9 21 5 20.1 5 19V6H4C3.45 6 3 5.55 3 5S3.45 4 4 4H7ZM9 3V4H15V3H9ZM7 6V19H17V6H7Z"/>
+                        </svg>
+                        <span class="basket-count" id="basketCount">0</span>
+                    </button>
+                    
+                    <!-- Basket Dropdown -->
+                    <div class="basket-dropdown" id="basketDropdown">
+                        <div class="basket-header">
+                            <h3>Seçilmiş Oyunlar</h3>
+                            <button class="close-basket" onclick="toggleBasket()">×</button>
+                        </div>
+                        <div class="basket-items" id="basketItems">
+                            <p class="empty-basket">Səbət boşdur</p>
+                        </div>
+                        <div class="basket-footer">
+                            <button class="btn btn-primary" onclick="clearBasket()">Səbəti Təmizlə</button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="mobile-menu">
                     <span></span>
                     <span></span>
@@ -27,6 +63,19 @@
             </div>
         </div>
     </header>
+
+    <!-- Search Results -->
+    <div class="search-results" id="searchResults" style="display: none;">
+        <div class="container">
+            <div class="search-header">
+                <h2>Axtarış Nəticələri</h2>
+                <button class="close-search" onclick="closeSearch()">×</button>
+            </div>
+            <div class="search-games-grid" id="searchGamesGrid">
+                <!-- Search results will be populated here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Page Header -->
     <section class="page-header">
@@ -145,5 +194,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
